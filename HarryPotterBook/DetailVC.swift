@@ -13,21 +13,21 @@ class DetailVC: UIViewController {
     @IBOutlet weak var namelabel: UILabel!
     @IBOutlet weak var agelabel: UILabel!
     
+    var secilenHarryPotter : HarryPotter?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        namelabel.text = secilenHarryPotter?.name
+        agelabel.text = secilenHarryPotter?.age
+        imageview.image = secilenHarryPotter?.image
+        
+        
+        
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }

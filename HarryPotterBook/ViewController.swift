@@ -12,6 +12,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableview: UITableView!
     
     var HarryPotterArray = [HarryPotter] ()
+    var chosenHarryPotter : HarryPotter?
     
     
     override func viewDidLoad() {
@@ -21,11 +22,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableview.dataSource = self
         
         
-        let Harry = HarryPotter(nameX: "Harry Potter", ageX: 15, imageX: UIImage(named: "harry")!)
-        let Hermione = HarryPotter(nameX: "Hermione Granger", ageX: 14, imageX: UIImage(named: "hermione")!)
-        let Ron = HarryPotter(nameX: "Ron Weasley", ageX: 15, imageX: UIImage(named: "ron")!)
-        let Dumbledore = HarryPotter(nameX: "Albus Dumbledore", ageX: 66, imageX: UIImage(named: "dumbledore")!)
-        let Snape = HarryPotter(nameX: "Severus Snape", ageX: 48, imageX: UIImage(named: "snape")!)
+        let Harry = HarryPotter(nameX: "Harry Potter", ageX: "15", imageX: UIImage(named: "harry")!)
+        let Hermione = HarryPotter(nameX: "Hermione Granger", ageX: "14", imageX: UIImage(named: "hermione")!)
+        let Ron = HarryPotter(nameX: "Ron Weasley", ageX: "15", imageX: UIImage(named: "ron")!)
+        let Dumbledore = HarryPotter(nameX: "Albus Dumbledore", ageX: "66", imageX: UIImage(named: "dumbledore")!)
+        let Snape = HarryPotter(nameX: "Severus Snape", ageX: "48", imageX: UIImage(named: "snape")!)
 
         HarryPotterArray.append(Harry)
         HarryPotterArray.append(Hermione)
@@ -47,6 +48,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.textLabel?.text = HarryPotterArray[indexPath.row].name
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        chosenHarryPotter = HarryPotterArray [indexPath.row]
+        self.performSegue(withIdentifier: "toDetailVC", sender: nil)
+    }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailVC" {
+            let destinationVC = segue.destination as! DetailVC
+            destinationVC.secilenHarryPotter = chosenHarryPotter
+        }
+    }
+    
 }
 

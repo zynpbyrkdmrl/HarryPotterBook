@@ -11,10 +11,10 @@ import UIKit
 class HarryPotter {
     
     var name : String
-    var age : Int
+    var age : String
     var image : UIImage
     
-    init(nameX : String, ageX : Int, imageX: UIImage) {
+    init(nameX : String, ageX : String, imageX: UIImage) {
     
         name = nameX
         age = ageX
