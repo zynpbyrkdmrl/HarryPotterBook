@@ -11,22 +11,40 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var tableview: UITableView!
     
+    var HarryPotterArray = [HarryPotter] ()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableview.delegate = self
         tableview.dataSource = self
+        
+        
+        let Harry = HarryPotter(nameX: "Harry Potter", ageX: 15, imageX: UIImage(named: "harry")!)
+        let Hermione = HarryPotter(nameX: "Hermione Granger", ageX: 14, imageX: UIImage(named: "hermione")!)
+        let Ron = HarryPotter(nameX: "Ron Weasley", ageX: 15, imageX: UIImage(named: "ron")!)
+        let Dumbledore = HarryPotter(nameX: "Albus Dumbledore", ageX: 66, imageX: UIImage(named: "dumbledore")!)
+        let Snape = HarryPotter(nameX: "Severus Snape", ageX: 48, imageX: UIImage(named: "snape")!)
+
+        HarryPotterArray.append(Harry)
+        HarryPotterArray.append(Hermione)
+        HarryPotterArray.append(Ron)
+        HarryPotterArray.append(Dumbledore)
+        HarryPotterArray.append(Snape)
+
+        
     }
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return HarryPotterArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell()
-        cell.textLabel?.text = "zeynep"
+        cell.textLabel?.text = HarryPotterArray[indexPath.row].name
         return cell
     }
 
